@@ -1,1 +1,1 @@
-#Práctica de JavaScript
+# Prácticas de JavaScript
