@@ -21,11 +21,11 @@ btn.addEventListener('click', (e) => {
 
     if (e.target.className === 'dark') {
         btn.className = 'light';
-        btn.textContent = 'Darken';
+        btn.textContent = 'Lighten';
         overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
     } else {
         btn.className = 'dark';
-        btn.textContent = 'Lighten';
+        btn.textContent = 'Darken';
         overlay.style.backgroundColor = 'rgba(0,0,0,0)';
     }
 })
