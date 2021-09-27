@@ -6,7 +6,6 @@ const overlay = document.querySelector('.overlay');
 
 let images = ['pic1.jpg', 'pic2.jpg', 'pic3.jpg', 'pic4.jpg', 'pic5.jpg'];
 
-/* Looping through images */
 
 images.forEach(element => {
     const newImage = document.createElement('img');
@@ -18,7 +17,6 @@ thumbBar.addEventListener('click', (e) => {
     displayedImage.setAttribute('src', e.target.getAttribute('src'));
 });
 
-/* Wiring up the Darken/Lighten button */
 btn.addEventListener('click', (e) => {
 
     if (e.target.className === 'dark') {
