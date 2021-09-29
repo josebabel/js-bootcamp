@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Async - Practice</title>
+</head>
+
+<body>
+
+    <img src="assets/spinner.svg" id="spinner">
+    <ul id="listado"></ul>
+
+    <script>
+        const listado = document.getElementById('listado');
+        const spinner = document.getElementById('spinner');
+
+        const fetKittens = fetch('data/kittens.json');
+        const fetPersons = fetch('data/persons.json');
+
+        Promise.all([fetKittens, fetPersons])
+            .then(values => {
+
+                madres = values[1].json();
+                crias = values[0].json();
+
+                madres.then(dataM => {
+
+                    //Array para sacar las madres
+                    for (let m of dataM) {
+
+                        let newLi = document.createElement('li');
+                        newLi.textContent = m.name;
+
+                        crias.then(dataK => {
+
+                            listado.appendChild(newLi);
+                            let newUl = document.createElement('ul');
+
+                            //Array para sacar las crias de la madre en concreto
+                            for (let k of dataK[m.name]) {
+
+                                let newLi2 = document.createElement('li');
+                                newLi2.textContent = k.name;
+                                newUl.appendChild(newLi2);
+                            }
+                            listado.appendChild(newUl);
+                            spinner.remove();
+                        })
+
+                    }
+
+                })
+                
+            });
+
+    </script>
+</body>
+
+</html>
